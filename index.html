@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Navnegenerator</title>
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --fg: #1b1a17;
+    --btn-bg: #1b1a17;
+    --btn-fg: #f4f1ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16150f;
+      --fg: #f0ece0;
+      --btn-bg: #f0ece0;
+      --btn-fg: #16150f;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: Georgia, "Times New Roman", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+  }
+  #navn {
+    font-size: clamp(2.2rem, 9vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    max-width: 16ch;
+    min-height: 1.1em;
+  }
+  button {
+    font-family: inherit;
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    padding: 0.85rem 2.2rem;
+    border: none;
+    border-radius: 999px;
+    background: var(--btn-bg);
+    color: var(--btn-fg);
+    cursor: pointer;
+    transition: transform .08s ease;
+  }
+  button:hover { transform: translateY(-2px); }
+  button:active { transform: translateY(0); }
+</style>
+</head>
+<body>
+  <div id="navn"></div>
+  <button id="knap">Nyt navn</button>
+
+<script>
+(function () {
+  "use strict";
+
+  // Danske fornavne – kun genkendeligt danske/nordiske navne, ingen internationalt klingende.
+  var fornavne = [
+    // Mandenavne
+    "Per","Lars","Jens","Søren","Niels","Hans","Ole","Peter","Henrik","Morten",
+    "Anders","Mads","Mikkel","Rasmus","Kristian","Jørgen","Poul","Erik","Bent","Bjørn",
+    "Knud","Kaj","Preben","Flemming","Torben","Kim","Palle","Ib","Svend","Valdemar",
+    "Frode","Gorm","Asger","Gunnar","Verner","Egon","Aksel","Holger","Emil","Oluf",
+    "Troels","Esben","Steen","Keld","Tage","Vagn","Børge","Frederik","Jeppe","Johan",
+    "Kasper","Sigurd","Viggo","Thor","Arne","Erling","Helge","Leif","Ejnar","Folmer",
+    "Uffe","Klaus","Allan","Villads","Mogens","Carsten","Benny","Ejvind","Gert","Kurt",
+    "Orla","Svend Aage","Hjalte","Gustav","Villy","Georg","Aage","Otto","Ivar","Dan",
+    // Kvindenavne
+    "Lone","Mette","Kirsten","Anne","Hanne","Bente","Gitte","Inge","Karen","Tove",
+    "Ellen","Grethe","Kirstine","Marie","Sofie","Ida","Freja","Astrid","Signe","Sanne",
+    "Pia","Susanne","Lise","Helle","Dorte","Birthe","Jytte","Ruth","Solveig","Gudrun",
+    "Ingrid","Randi","Vibeke","Bodil","Karin","Lisbeth","Maren","Johanne","Katrine","Trine",
+    "Rikke","Nanna","Frederikke","Agnes","Dagny","Esther","Gerda","Yrsa","Asta","Edith",
+    "Oda","Sigrid","Thyra","Ulla","Rigmor","Kamma","Ketty","Ragnhild","Inger","Elisabeth",
+    "Nora","Alma","Ella","Josefine","Mathilde","Amalie","Liva","Mille","Line","Britta",
+    "Winnie","Conny","Jonna","Else","Karla","Dagmar","Petra","Ellinor","Nikoline","Gunhild"
+  ];
+
+  // Danske arbejdsbeskrivelser / stillingsbetegnelser.
+  var stillinger = [
+    "Murer","Tømrer","Snedker","Elektriker","Blikkenslager","Maler","Tagdækker","Brolægger","Smed","Mekaniker",
+    "Slagter","Bager","Fisker","Landmand","Gårdejer","Brugsuddeler","Købmand","Tandlæge","Læge","Sygeplejerske",
+    "Jordemoder","Dyrlæge","Skolelærer","Præst","Degn","Organist","Postbud","Skorstensfejer","Gartner","Skovfoged",
+    "Fyrmester","Havnefoged","Kranfører","Chauffør","Lastbilchauffør","Buschauffør","Lokomotivfører","Sømand","Skipper","Bådebygger",
+    "Bødker","Sadelmager","Skomager","Skrædder","Væver","Guldsmed","Urmager","Optiker","Frisør","Barber",
+    "Bogholder","Revisor","Sagfører","Dommer","Betjent","Brandmand","Livredder","Bibliotekar","Arkivar","Journalist",
+    "Redaktør","Bogtrykker","Typograf","Fotograf","Kok","Tjener","Kroejer","Brygger","Ostehandler","Fiskehandler",
+    "Grønthandler","Isenkræmmer","Boghandler","Blomsterhandler","Møller","Bonde","Røgter","Fårehyrde","Biavler","Frugtavler",
+    "Vinbonde","Kirkegårdsgraver","Klokker","Vægter","Natvægter","Færgemand","Kromand","Spillemand","Gøgler","Klovn",
+    "Kunstmaler","Billedhugger","Keramiker","Pottemager","Glaspuster","Kurvemager","Rebslager","Tækkemand","Stenhugger","Brøndgraver",
+    "Kulsvier","Tørvegraver","Fyrbøder","Bogbinder","Instrumentmager","Orgelbygger","Klaverstemmer","Vagabond","Æblehandler","Kartoffelavler"
+  ];
+
+  var navnEl = document.getElementById("navn");
+  var knap = document.getElementById("knap");
+
+  function tilfaeldig(liste) {
+    return liste[Math.floor(Math.random() * liste.length)];
+  }
+
+  function generer() {
+    navnEl.textContent = tilfaeldig(fornavne) + " " + tilfaeldig(stillinger);
+  }
+
+  knap.addEventListener("click", generer);
+  generer();
+})();
+</script>
+</body>
+</html>
