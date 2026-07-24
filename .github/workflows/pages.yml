@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - claude/danish-name-job-generator-tayxjq
+      - main
   workflow_dispatch:
 
 permissions:
