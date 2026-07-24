@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - claude/danish-name-job-generator-tayxjq
   workflow_dispatch:
 
 permissions:
