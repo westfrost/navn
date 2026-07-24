@@ -68,16 +68,23 @@
 
   // Danske fornavne – kun genkendeligt danske/nordiske navne, ingen internationalt klingende.
   var fornavne = [
-    // Mandenavne
     "Per","Lars","Jens","Søren","Niels","Hans","Ole","Peter","Henrik","Morten",
     "Anders","Mads","Mikkel","Rasmus","Kristian","Jørgen","Poul","Erik","Bent","Bjørn",
-    "Knud","Kaj","Preben","Flemming","Torben","Kim","Palle","Ib","Svend","Valdemar",
-    "Frode","Gorm","Asger","Gunnar","Verner","Egon","Aksel","Holger","Emil","Oluf",
-    "Troels","Esben","Steen","Keld","Tage","Vagn","Børge","Frederik","Jeppe","Johan",
-    "Kasper","Sigurd","Viggo","Thor","Arne","Erling","Helge","Leif","Ejnar","Folmer",
-    "Uffe","Klaus","Allan","Villads","Mogens","Carsten","Benny","Ejvind","Gert","Kurt",
-    "Orla","Svend Aage","Hjalte","Gustav","Villy","Georg","Aage","Otto","Ivar","Dan",
-    // Kvindenavne
+    "Knud","Kaj","Preben","Flemming","Torben","Palle","Ib","Svend","Valdemar","Frode",
+    "Gorm","Asger","Gunnar","Verner","Egon","Aksel","Holger","Emil","Oluf","Troels",
+    "Esben","Steen","Keld","Tage","Vagn","Børge","Frederik","Jeppe","Johan","Kasper",
+    "Sigurd","Viggo","Thor","Arne","Erling","Helge","Leif","Ejnar","Folmer","Uffe",
+    "Klaus","Villads","Mogens","Carsten","Benny","Ejvind","Gert","Orla","Hjalte","Gustav",
+    "Villy","Georg","Aage","Otto","Ivar","Christian","Christoffer","Andreas","Jonas","Simon",
+    "Marius","Silas","Storm","Loke","Balder","Odin","Halfdan","Tyge","Toke","Trygve",
+    "Vilhelm","Alf","Bo","Bjarne","Finn","Hartvig","Egil","Ejler","Erhard","Ernst",
+    "Evald","Ferdinand","Frands","Gunder","Harald","Hemming","Henning","Hjalmar","Ingemann","Ingvar",
+    "Jakob","Jarl","Joakim","Jørn","Karl","Karsten","Kresten","Lauritz","Lauge","Laurids",
+    "Ludvig","Malte","Marinus","Martin","Mathias","Mourits","Nis","Njål","Ove","Peder",
+    "Rune","Sigfred","Steffen","Stig","Sune","Svenning","Terkel","Thorvald","Thøger","Torkild",
+    "Ulrik","Vermund","Vidar","Yngve","Åge","Anton","Hother","Ingolf","Alrik","Bertel",
+    "Detlef","Ejgil","Frantz","Gudmund","Hardy","Ingmar","Kjeld","Knut","Kristen","Lorents",
+    "Mikael","Nikolaj","Oskar","Osvald","Rikard","Sigvald","Thorbjørn","Valter","Vilfred","Vitus",
     "Lone","Mette","Kirsten","Anne","Hanne","Bente","Gitte","Inge","Karen","Tove",
     "Ellen","Grethe","Kirstine","Marie","Sofie","Ida","Freja","Astrid","Signe","Sanne",
     "Pia","Susanne","Lise","Helle","Dorte","Birthe","Jytte","Ruth","Solveig","Gudrun",
@@ -85,7 +92,16 @@
     "Rikke","Nanna","Frederikke","Agnes","Dagny","Esther","Gerda","Yrsa","Asta","Edith",
     "Oda","Sigrid","Thyra","Ulla","Rigmor","Kamma","Ketty","Ragnhild","Inger","Elisabeth",
     "Nora","Alma","Ella","Josefine","Mathilde","Amalie","Liva","Mille","Line","Britta",
-    "Winnie","Conny","Jonna","Else","Karla","Dagmar","Petra","Ellinor","Nikoline","Gunhild"
+    "Jonna","Else","Karla","Dagmar","Petra","Ellinor","Nikoline","Gunhild","Agathe","Alberte",
+    "Anna","Annelise","Benedikte","Birgit","Birgitte","Birte","Bolette","Cecilie","Clara","Ebba",
+    "Elin","Elna","Emma","Erna","Estrid","Eva","Fie","Frida","Gerd","Gjertrud",
+    "Gunver","Hedvig","Helga","Henriette","Hilda","Ingeborg","Ingelise","Iben","Jenny","Jette",
+    "Julie","Karoline","Kaja","Kamilla","Kathrine","Klara","Kristine","Laurine","Lena","Lilly",
+    "Lis","Liselotte","Louise","Magda","Malene","Margit","Margrethe","Marianne","Meta","Mie",
+    "Minna","Mona","Mynte","Oline","Olga","Petrea","Rebekka","Rie","Rosa","Selma",
+    "Sidsel","Sine","Stine","Thora","Tilde","Tine","Tinne","Ulrikke","Vita","Vivi",
+    "Åse","Aase","Bitten","Dorit","Grete","Gurli","Hansine","Karna","Nielsine","Petrine",
+    "Sørine","Gunde","Maja","Nete"
   ];
 
   // Danske arbejdsbeskrivelser / stillingsbetegnelser.
@@ -100,7 +116,18 @@
     "Grønthandler","Isenkræmmer","Boghandler","Blomsterhandler","Møller","Bonde","Røgter","Fårehyrde","Biavler","Frugtavler",
     "Vinbonde","Kirkegårdsgraver","Klokker","Vægter","Natvægter","Færgemand","Kromand","Spillemand","Gøgler","Klovn",
     "Kunstmaler","Billedhugger","Keramiker","Pottemager","Glaspuster","Kurvemager","Rebslager","Tækkemand","Stenhugger","Brøndgraver",
-    "Kulsvier","Tørvegraver","Fyrbøder","Bogbinder","Instrumentmager","Orgelbygger","Klaverstemmer","Vagabond","Æblehandler","Kartoffelavler"
+    "Kulsvier","Tørvegraver","Fyrbøder","Bogbinder","Instrumentmager","Orgelbygger","Klaverstemmer","Vagabond","Æblehandler","Kartoffelavler",
+    "Tobakshandler","Vinhandler","Slikmutter","Marskandiser","Antikvarboghandler","Bogtrykkersvend","Farver","Garver","Buntmager","Handskemager",
+    "Hattemager","Parykmager","Knivsmed","Kobbersmed","Gørtler","Kandestøber","Klejnsmed","Grovsmed","Hovslager","Beslagsmed",
+    "Vognmand","Hyrekusk","Kusk","Staldkarl","Ladefoged","Avlskarl","Husmand","Fæstebonde","Tjenestepige","Malkepige",
+    "Mejerist","Mejeribestyrer","Ismejerske","Kærnemager","Bryggeriarbejder","Teglværksarbejder","Savskærer","Tømmerhandler","Trædrejer","Karetmager",
+    "Hjulmager","Skibsbygger","Sejlmager","Tovværksmager","Fyrpasser","Lodser","Toldbetjent","Strandfoged","Ålefisker","Rejefisker",
+    "Muslingefisker","Dykker","Frømand","Skytte","Vildtforvalter","Jæger","Rakker","Bøddel","Natmand","Kludekræmmer",
+    "Skærsliber","Kedelflikker","Positivspiller","Lirekassemand","Gadefejer","Skraldemand","Brøndborer","Tømrermester","Murermester","Malermester",
+    "Bagermester","Slagtermester","Skomagermester","Barbermester","Danselærer","Dansemester","Sanglærer","Kapelmester","Ringer","Graver",
+    "Kirkebetjent","Sognefoged","Amtsforvalter","Herredsfoged","Byfoged","Rådmand","Borgmester","Toldkontrollør","Postmester","Stationsforstander",
+    "Banearbejder","Sporskifter","Signalmand","Portør","Piccolo","Portier","Opvarter","Kældermester","Vinkyper","Ølkusk",
+    "Isvognsmand","Mælkedreng","Avisdreng","Bydreng","Skopudser","Lygtetænder"
   ];
 
   var navnEl = document.getElementById("navn");
