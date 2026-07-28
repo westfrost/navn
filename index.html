@@ -165,7 +165,14 @@
   }
 
   function generer() {
-    navnEl.textContent = tilfaeldig(navneord) + " " + tilfaeldig(fornavne) + " " + tilfaeldig(stillinger);
+    var navn = tilfaeldig(fornavne);
+    if (Math.random() < 0.5) {
+      // Navneord FORAN navnet – intet job efter.
+      navnEl.textContent = tilfaeldig(navneord) + " " + navn;
+    } else {
+      // Job EFTER navnet – intet navneord foran.
+      navnEl.textContent = navn + " " + tilfaeldig(stillinger);
+    }
   }
 
   knap.addEventListener("click", generer);
