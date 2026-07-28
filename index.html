@@ -66,6 +66,33 @@
 (function () {
   "use strict";
 
+  // Tilfældige navneord – placeres FORAN navnet.
+  var navneord = [
+    "Batteri","Knallert","Dukke","Cykel","Spand","Kartoffel","Paraply","Tromme","Sæbe","Gummistøvle",
+    "Kaffekop","Hammer","Sav","Skovl","Rive","Trillebør","Vandkande","Blomsterpotte","Gryde","Pande",
+    "Kedel","Tallerken","Gaffel","Ske","Kniv","Krus","Flaske","Dåse","Kasse","Kurv",
+    "Pose","Taske","Kuffert","Rygsæk","Pude","Dyne","Tæppe","Madras","Lampe","Stearinlys",
+    "Lommelygte","Vækkeur","Radio","Fjernsyn","Telefon","Computer","Tastatur","Højttaler","Hovedtelefon","Kamera",
+    "Kikkert","Forstørrelsesglas","Saks","Blyant","Kuglepen","Viskelæder","Lineal","Papir","Bog","Avis",
+    "Plakat","Frimærke","Kuvert","Postkort","Ballon","Fløjte","Harmonika","Guitar","Violin","Klaver",
+    "Trompet","Klokke","Propel","Motor","Gearkasse","Cylinder","Ventil","Pumpe","Slange","Tragt",
+    "Prop","Skrue","Søm","Møtrik","Bolt","Fjeder","Tandhjul","Kæde","Rem","Snor",
+    "Reb","Garn","Nål","Knap","Lynlås","Spænde","Bælte","Støvle","Sok","Vante",
+    "Hue","Kasket","Halstørklæde","Briller","Paryk","Pindsvin","Muldvarp","Frø","Snegl","Myre",
+    "Bille","Sommerfugl","Edderkop","Flagermus","Ugle","Pingvin","Søhest","Blæksprutte","Krabbe","Reje",
+    "Musling","Tang","Koral","Sten","Grus","Sand","Mudder","Ler","Tørv","Brænde",
+    "Kogle","Agern","Kastanje","Æble","Pære","Blomme","Kirsebær","Jordbær","Hindbær","Blåbær",
+    "Ribs","Rabarber","Gulerod","Løg","Hvidløg","Rødbede","Græskar","Agurk","Tomat","Bønne",
+    "Ris","Mel","Dej","Brød","Bolle","Kringle","Kage","Vaffel","Pandekage","Æbleskive",
+    "Frikadelle","Spegepølse","Leverpostej","Rugbrød","Smør","Ost","Sild","Ål","Torsk","Makrel",
+    "Laks","Smørrebrød","Snaps","Kakao","Saftevand","Grammofon","Symaskine","Skrivemaskine","Barnevogn","Rulleskøjte",
+    "Kælk","Slæde","Trækvogn","Scooter","Løbehjul","Trehjulet","Tordenvejr","Regnbue","Vindmølle","Vejrhane",
+    "Skorsten","Brønd","Stakit","Låge","Grantræ","Kastanjetræ","Paddehat","Svamp","Kogleaks","Brændenælde",
+    "Mælkebøtte","Tulipan","Solsikke","Potteplante","Fuglekasse","Kanin","Marsvin","Guldfisk","Papegøje","Undulat",
+    "Skildpadde","Firben","Salamander","Regnorm","Mariehøne","Gedehams","Humlebi","Græshoppe","Skarabæ","Muldvarpeskud",
+    "Stankelben","Tusindben"
+  ];
+
   // Danske fornavne – kun genkendeligt danske/nordiske navne, ingen internationalt klingende.
   var fornavne = [
     "Per","Lars","Jens","Søren","Niels","Hans","Ole","Peter","Henrik","Morten",
@@ -138,7 +165,7 @@
   }
 
   function generer() {
-    navnEl.textContent = tilfaeldig(fornavne) + " " + tilfaeldig(stillinger);
+    navnEl.textContent = tilfaeldig(navneord) + " " + tilfaeldig(fornavne) + " " + tilfaeldig(stillinger);
   }
 
   knap.addEventListener("click", generer);
